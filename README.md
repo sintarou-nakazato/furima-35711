@@ -14,13 +14,13 @@
 | birth_day          | date    | null: false                   |
 
 Association
-・has_many :products
-・has_many :card
+・has_many :items
+・has_many :cards
 
 
 ##itemテーブル(出品中の商品情報)
 
-| Column              | Type    | Options                        | 
+| Column              | Type    | Options                        |
 | -----------         | ------- | ------------------------------ |
 | product_name        | string  | null: false                    |
 | product_description | text    | null: false                    |
@@ -34,6 +34,7 @@ Association
 
 Association
 ・belongs_to :user
+・has_one :card
 
 
 ##cardテーブル(購入記録)
@@ -45,6 +46,7 @@ Association
 
 Association
 ・belongs_to :user
+・belongs_to :item
 ・has_one :destination
 
 ##destinationテーブル(発送先情報)
@@ -57,7 +59,7 @@ Association
 | address             | string  | null: false     |
 | building_name       | string  |                 |
 | phone_number        | string  | null: false     |
-| card_id             | sering  | null: false, foreign_key: true |
+| card_id             | integer | null: false, foreign_key: true |
 
 Association
 ・belongs_to :card
