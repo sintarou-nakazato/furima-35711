@@ -30,7 +30,7 @@ Association
 | area_id             | integer | null: false                    |
 | day_id              | integer | null: false                    |
 | price               | integer | null: false                    |
-| user_id             | integer | null: false, foreign_key: true |
+| user                | reference | null: false, foreign_key: true |
 
 Association
 ・belongs_to :user
@@ -41,8 +41,8 @@ Association
 
 | Column              | Type    | Options                        |
 | ------------------- | ------- | ------------------------------ |
-| user_id             | string  | null: false, foreign_key: true |
-| item_id             | string  | null: false, foreign_key: true |
+| user                | reference | null: false, foreign_key: true |
+| item                | reference | null: false, foreign_key: true |
 
 Association
 ・belongs_to :user
@@ -59,7 +59,7 @@ Association
 | address             | string  | null: false     |
 | building_name       | string  |                 |
 | phone_number        | string  | null: false     |
-| card_id             | integer | null: false, foreign_key: true |
+| card                | reference | null: false, foreign_key: true |
 
 Association
 ・belongs_to :card
