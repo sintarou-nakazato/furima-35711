@@ -15,11 +15,10 @@
 
 Association
 ・has_many :products
-・has_one :card
-・has_one :destination
+・has_many :card
 
 
-##productテーブル(出品中の商品情報)
+##itemテーブル(出品中の商品情報)
 
 | Column              | Type    | Options                        | 
 | -----------         | ------- | ------------------------------ |
@@ -29,7 +28,7 @@ Association
 | condition_id        | integer | null: false                    |
 | cost_id             | integer | null: false                    |
 | area_id             | integer | null: false                    |
-| days_id             | integer | null: false                    |
+| day_id              | integer | null: false                    |
 | price               | integer | null: false                    |
 | user_id             | integer | null: false, foreign_key: true |
 
@@ -46,17 +45,19 @@ Association
 
 Association
 ・belongs_to :user
+・has_one :destination
 
 ##destinationテーブル(発送先情報)
 
 | Column              | Type    | Options         |
 | -----------         | ------- | --------------- |
 | postal_code         | string  | null: false     |
-| prefectures_id      | integer | null: false     |
+| prefecture_id       | integer | null: false     |
 | city                | string  | null: false     |
 | address             | string  | null: false     |
 | building_name       | string  |                 |
 | phone_number        | string  | null: false     |
+| card_id             | sering  | null: false, foreign_key: true |
 
 Association
-・belongs_to :user
+・belongs_to :card
