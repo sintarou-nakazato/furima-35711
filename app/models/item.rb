@@ -16,8 +16,8 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :category
-  belongs_to :Condition
-  belongs_to :cost
-  belongs_to :area
+  belongs_to_active_hash  :category
+  belongs_to_active_hash :Condition
+  belongs_to_active_hash :cost
+  belongs_to_active_hash :area
 end
