@@ -8,7 +8,9 @@ class Item < ApplicationRecord
     validates :area_id
     validates :day_id
     validates :price
+    validates :image
   end
 
   belongs_to :user
+  has_one_attached :image
 end
