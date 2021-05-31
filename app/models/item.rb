@@ -3,10 +3,10 @@ class Item < ApplicationRecord
     validates :product_name
     validates :product_description
     validates :category_id,            numericality: { other_than: 1 }
-    validates :condition_id
-    validates :cost_id
-    validates :area_id
-    validates :day_id
+    validates :condition_id,           numericality: { other_than: 1 }
+    validates :cost_id,                numericality: { other_than: 1 }
+    validates :area_id,                numericality: { other_than: 1 }
+    validates :day_id,                 numericality: { other_than: 1 }
     validates :price
     validates :image
   end
@@ -17,4 +17,7 @@ class Item < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
+  belongs_to :Condition
+  belongs_to :cost
+  belongs_to :area
 end
