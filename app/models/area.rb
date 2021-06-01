@@ -52,9 +52,9 @@ class Area < ActiveHash::Base
     { id: 50, name: '大分県' },
     { id: 51, name: '宮城県' },
     { id: 52, name: '鹿児島県' },
-    { id: 53, name: '沖縄県' },
+    { id: 53, name: '沖縄県' }
   ]
 
   include ActiveHash::Associations
   has_many :items
-  end
+end

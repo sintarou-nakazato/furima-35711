@@ -3,11 +3,11 @@ FactoryBot.define do
     # image                   { '画像' }
     product_name            { '商品' }
     product_description     { '長文' }
-    category_id             { '000' }
-    condition_id            { '000' }
-    cost_id                 { '000' }
-    area_id                 { '000' }
-    day_id                  { '000' }
+    category_id             { 2 }
+    condition_id            { 2 }
+    cost_id                 { 2 }
+    area_id                 { 2 }
+    day_id                  { 2 }
     price                   { 300 }
     association :user
 
