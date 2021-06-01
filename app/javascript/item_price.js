@@ -10,7 +10,6 @@ window.addEventListener('load', function(){
 
     const salesProfit = document.getElementById("profit")
     const value_result = inputValue * 0.1
-    console.log(value_result)
     salesProfit.innerHTML = (Math.floor(inputValue - value_result))
   })
 })
