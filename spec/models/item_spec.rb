@@ -57,7 +57,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include 'Price must be greater than or equal to 300'
       end
       it 'priceは¥10000000以上なら登録できない' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         @item.valid?
         expect(@item.errors.full_messages).to include 'Price must be less than or equal to 9999999'
       end
@@ -69,42 +69,42 @@ RSpec.describe Item, type: :model do
       it 'category_idが1なら登録できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "Category must be other than 1"
+        expect(@item.errors.full_messages).to include 'Category must be other than 1'
       end
       it 'condition_idが1なら登録できない' do
         @item.condition_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "Condition must be other than 1"
+        expect(@item.errors.full_messages).to include 'Condition must be other than 1'
       end
       it 'cost_idが1なら登録できない' do
         @item.cost_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "Cost must be other than 1"
+        expect(@item.errors.full_messages).to include 'Cost must be other than 1'
       end
       it 'area_idが1なら登録できない' do
         @item.area_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "Area must be other than 1"
+        expect(@item.errors.full_messages).to include 'Area must be other than 1'
       end
       it 'day_idが1なら登録できない' do
         @item.day_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "Day must be other than 1"
+        expect(@item.errors.full_messages).to include 'Day must be other than 1'
       end
       it 'priceが全角文字では登録できない' do
         @item.price = 'さんびゃく'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Price is not a number"
+        expect(@item.errors.full_messages).to include 'Price is not a number'
       end
       it 'priceが半角英数混合では登録できない' do
         @item.price = '300ss'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Price is not a number"
+        expect(@item.errors.full_messages).to include 'Price is not a number'
       end
       it 'priceが半角英語だけでは登録できない' do
         @item.price = 'money'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Price is not a number"
+        expect(@item.errors.full_messages).to include 'Price is not a number'
       end
       it 'imageが空なら登録できない' do
         @item.image = nil
