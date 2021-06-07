@@ -1,13 +1,14 @@
 class CardDestination
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :city, :address, :building_name, :phone_number
+  attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :city, :address, :building_name, :phone_number, :token
 
   with_options presence: true do
-    validates :postal_code         format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
+    validates :postal_code,         format: {with: /\A[0-9]{3}-[0-9]{4}\z/ }
     validates :prefecture_id
-    validates :city                format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "is invalid. Input full-width characters."}
+    validates :city,                format: { with: /\A[ぁ-んァ-ン一-龥]/ }
     validates :address
-    validates :phone_number        format: {with: /\A\d{10}\z|\A\d{11}\z/ , message: "is invalid."}
+    validates :phone_number,        format: {with: /\A\d{10}\z|\A\d{11}\z/ }
+    validates :token
   end
   validate :building_name
 
