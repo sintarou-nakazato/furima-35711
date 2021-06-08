@@ -2,9 +2,9 @@ class CardsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
 
   def index
-    @card_destination = CardDestination.new
     @item = Item.find(params[:item_id])
-    redirect_to root_path if current_user == @item.user
+    redirect_to root_path if current_user == @item.user || @item.card.present?
+    @card_destination = CardDestination.new
   end
 
   def create
