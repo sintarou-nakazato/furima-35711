@@ -49,6 +49,16 @@ RSpec.describe CardDestination, type: :model do
         @card_destination.valid?
         expect(@card_destination.errors.full_messages).to include "Token can't be blank"
       end
+      it 'user_idが空なら登録できない' do
+        @card_destination.user_id = ''
+        @card_destination.valid?
+        expect(@card_destination.errors.full_messages).to include "User can't be blank"
+      end
+      it 'item_idが空なら登録できない' do
+        @card_destination.item_id = ''
+        @card_destination.valid?
+        expect(@card_destination.errors.full_messages).to include "Item can't be blank"
+      end
       it 'postal_codeにハイフンがなければ登録できない' do
         @card_destination.postal_code = '3539761'
         @card_destination.valid?
@@ -69,15 +79,10 @@ RSpec.describe CardDestination, type: :model do
         @card_destination.valid?
         expect(@card_destination.errors.full_messages).to include "Phone number is invalid"
       end
-      it 'user_idが空なら登録できない' do
-        @card_destination.user_id = ''
+      it 'phone_numberは全角数字だと登録できないこと' do
+        @card_destination.phone_number = '１２３'
         @card_destination.valid?
-        expect(@card_destination.errors.full_messages).to include "User can't be blank"
-      end
-      it 'item_idが空なら登録できない' do
-        @card_destination.item_id = ''
-        @card_destination.valid?
-        expect(@card_destination.errors.full_messages).to include "Item can't be blank"
+        expect(@card_destination.errors.full_messages).to include "Phone number is invalid"
       end
     end
   end
