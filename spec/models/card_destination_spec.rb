@@ -48,17 +48,17 @@ RSpec.describe CardDestination, type: :model do
       it 'postal_codeにハイフンがなければ登録できない' do
         @card_destination.postal_code = '3539761'
         @card_destination.valid?
-        expect(@card_destination.errors.full_messages).to include "Postal code is invalid"
+        expect(@card_destination.errors.full_messages).to include 'Postal code is invalid'
       end
       it 'phone_numberは11桁以下でないと登録できない' do
         @card_destination.phone_number = '123456789000'
         @card_destination.valid?
-        expect(@card_destination.errors.full_messages).to include "Phone number is invalid"
+        expect(@card_destination.errors.full_messages).to include 'Phone number is invalid'
       end
       it 'prefecture_idが1なら登録できない' do
         @card_destination.prefecture_id = '1'
         @card_destination.valid?
-        expect(@card_destination.errors.full_messages).to include "Prefecture must be other than 1"
+        expect(@card_destination.errors.full_messages).to include 'Prefecture must be other than 1'
       end
     end
   end
