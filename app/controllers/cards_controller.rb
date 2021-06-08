@@ -1,14 +1,13 @@
 class CardsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
+  before_action :set_question, only: [:index, :create]
+  before_action :set_questions, only: [:index, :create]
 
   def index
-    @item = Item.find(params[:item_id])
-    redirect_to root_path if current_user == @item.user || @item.card.present?
     @card_destination = CardDestination.new
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @card_destination = CardDestination.new(card_params)
     if @card_destination.valid?
       pay_item
@@ -34,5 +33,13 @@ class CardsController < ApplicationController
       card: card_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def set_question
+    @item = Item.find(params[:item_id])
+  end
+
+  def set_questions
+    redirect_to root_path if current_user == @item.user || @item.card.present?
   end
 end

@@ -10,7 +10,6 @@ class CardDestination
     validates :phone_number, format: { with: /\A\d{10}\z|\A\d{11}\z/ }
     validates :token
   end
-  validate :building_name
 
   def save
     card = Card.create(user_id: user_id, item_id: item_id)

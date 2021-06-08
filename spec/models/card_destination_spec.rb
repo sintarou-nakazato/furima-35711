@@ -13,6 +13,10 @@ RSpec.describe CardDestination, type: :model do
       it 'すべての項目の内容が正しく入力されていれば保存できる' do
         expect(@card_destination).to be_valid
       end
+      it 'building_nameが空でも登録できる' do
+        @card_destination.building_name = ''
+        expect(@card_destination).to be_valid
+      end
     end
     context '内容に問題がある場合' do
       it 'postal_codeが空なら登録できない' do
@@ -56,9 +60,14 @@ RSpec.describe CardDestination, type: :model do
         expect(@card_destination.errors.full_messages).to include 'Phone number is invalid'
       end
       it 'prefecture_idが1なら登録できない' do
-        @card_destination.prefecture_id = '1'
+        @card_destination.prefecture_id = 1
         @card_destination.valid?
         expect(@card_destination.errors.full_messages).to include 'Prefecture must be other than 1'
+      end
+      it 'phone_numberは英数混合なら登録できない' do
+        @card_destination.phone_number = '080ooo'
+        @card_destination.valid?
+        expect(@card_destination.errors.full_messages).to include "Phone number is invalid"
       end
     end
   end
