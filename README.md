@@ -36,7 +36,6 @@ Association
 ・belongs_to :user
 ・has_one :card
 
-
 ##cardテーブル(購入記録)
 
 | Column              | Type    | Options                        |
