@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   before_action :set_questions, only: [:edit, :update, :destroy]
 
@@ -50,6 +50,6 @@ class ItemsController < ApplicationController
   end
 
   def set_questions
-    redirect_to action: :index unless current_user.id == @item.user_id
+    redirect_to root_path if current_user == @item.user || @item.card.present?
   end
 end
