@@ -50,6 +50,6 @@ class ItemsController < ApplicationController
   end
 
   def set_questions
-    redirect_to root_path unless current_user == @item.user || @item.card.present?
+    redirect_to root_path if current_user != @item.user || @item.card.present?
   end
 end
